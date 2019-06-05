@@ -44,24 +44,26 @@ def get_part_collection_loc(collection):
     return dict_arr
            
 def get_glycerol_stock_plates(db, plan_id):
-
 	plan = db.Plan.find(plan_id)
 	glycerol_ops = [op for op in plan.operations if op.operation_type.name == 'Make Glycerol Stock Plates']
 	glycerol_stock_plates = db.Collection.find([op.outputs[0].item.id for op in glycerol_ops])
 	return glycerol_stock_plates
 
 def main():
-	db = session()
-	# read commandline arguments, first
-	fullCmdArguments = sys.argv
-	plan_id_list = fullCmdArguments[1:]
-	for plan_id in plan_id_list:
-		glycerol_stock_plates = get_glycerol_stock_plates(db, plan_id)
-		for collection in glycerol_stock_plates:
-		    filename = f'{collection.object_type.name} {collection.id} plate.csv'.replace(' ', '_')
-		    df = pd.DataFrame(get_part_collection_loc(collection))
-		    df.to_csv(filename)
-
+    db = session()
+    fullCmdArguments = sys.argv
+    plan_id_list = fullCmdArguments[1:]
+    cwd_path = os.getcwd()
+    for plan_id in plan_id_list:
+        plan_dir_path = cwd_path + '/plan_{}'.format(plan_id)
+        os.makedirs(plan_dir_path, exist_ok=True)
+        os.chdir(plan_dir_path)
+        for collection in get_glycerol_stock_plates(db, plan_id):
+            filename = f'{collection.object_type.name} {collection.id} plate.csv'.replace(' ', '_')
+            df = pd.DataFrame(get_part_collection_loc(collection))
+            df.to_csv(filename)
+            break
+        break
 
 if __name__ == "__main__":
     main()

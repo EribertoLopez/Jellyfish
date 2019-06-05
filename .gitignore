@@ -1,0 +1,6 @@
+# Files to ignore
+resources.py
+
+# Ignore output files
+**/*.csv
+**/__pycache__ 

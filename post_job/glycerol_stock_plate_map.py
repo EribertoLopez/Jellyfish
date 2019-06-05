@@ -23,7 +23,6 @@ def session():
 def generate_collection_part_associations(collection):
     for pa in collection.part_associations:
         yield pa
-    # return collection.part_associations
 
 def generate_data_associations(data_associations):
     for da in data_associations:

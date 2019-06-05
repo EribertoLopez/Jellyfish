@@ -62,8 +62,6 @@ def main():
             filename = f'{collection.object_type.name} {collection.id} plate.csv'.replace(' ', '_')
             df = pd.DataFrame(get_part_collection_loc(collection))
             df.to_csv(filename)
-            break
-        break
 
 if __name__ == "__main__":
     main()

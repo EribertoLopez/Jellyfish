@@ -20,10 +20,12 @@ def session():
     )
     return db
 
-def get_collection_part_associations(collection):
-    return collection.part_associations
+def generate_collection_part_associations(collection):
+    for pa in collection.part_associations:
+        yield pa
+    # return collection.part_associations
 
-def data_associations_generator(data_associations):
+def generate_data_associations(data_associations):
     for da in data_associations:
         yield da
 
@@ -31,14 +33,13 @@ def get_part_collection_loc(collection):
     alpha_rows = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
     alpha_dict = dict(zip(range(0, len(alpha_rows)), alpha_rows))
     dict_arr = []
-    for pa in get_collection_part_associations(collection):
+    for pa in generate_collection_part_associations(collection):
         d = dict()
         d['plate_id'] = collection.id
         d['Well Index'] = alpha_dict[pa.row] +  str(pa.column+1)
         d['Well Label'] = pa.part.id
         d['Vol (uL)'] = 40
-        part = pa.part
-        for da in data_associations_generator(part.data_associations):
+        for da in generate_data_associations(pa.part.data_associations):
             d[da.key] = da.object[da.key]
         dict_arr.append(d)
     return dict_arr

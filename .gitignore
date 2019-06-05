@@ -3,4 +3,4 @@ resources.py
 
 # Ignore output files
 **/*.csv
-**/__pycache__ 
+**/__pycache__

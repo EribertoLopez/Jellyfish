@@ -4,3 +4,4 @@ resources.py
 # Ignore output files
 **/*.csv
 **/__pycache__
+**/plan_**

@@ -16,14 +16,14 @@ def session(server):
     return db
 
 # First, plan a define culture condition operation. 
-def submit_define_culture_condition(canvas, strain_sample, strain_item, strain_containerObjectType,
+def submit_define_culture_condition(canvas, strain_sample, strain_item, strain_ObjectType,
                                     media_sample, media_ObjectType, replicates, inducer_param, 
                                     antibio_param, control_param, options_param):
     op = canvas.create_operation_by_name("Define Culture Conditions")
     # Output
-    canvas.set_field_value(op.output("Culture Condition"), sample=strain_sample, container=strain_containerObjectType, item=strain_item)
+    canvas.set_field_value(op.output("Culture Condition"), sample=strain_sample, container=strain_ObjectType, item=strain_item)
     # Inputs
-    canvas.set_field_value(op.input('Strain'), sample=strain_sample, container=strain_containerObjectType, item=strain_item)
+    canvas.set_field_value(op.input('Strain'), sample=strain_sample, container=strain_ObjectType, item=strain_item)
     canvas.set_field_value(op.input('Media'),  sample=media_sample,  container=media_ObjectType)
     # JSON Parsable Paramters
     canvas.set_field_value(op.input('Replicates'),    value=int(replicates))

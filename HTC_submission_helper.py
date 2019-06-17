@@ -113,8 +113,12 @@ def submit_inoculate_culture_plate(canvas, culture_condition_list, incubation_te
         op.add_to_field_value_array(name="Culture Condition", role='input')
         
     for idx, cc_op in enumerate(culture_condition_list):
+        print()
+        strain_item = cc_op.outputs[0].item
+        print(strain_item)
         input_array = op.field_value_array(name='Culture Condition', role='input')
         canvas.add_wire(cc_op.outputs[0], input_array[idx])
+        canvas.set_field_value(cc_op.output("Culture Condition"), item=strain_item)
         
     op.set_field_value_array(name="Culture Condition", role='input', values=input_val_array)
     return op

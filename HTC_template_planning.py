@@ -4,7 +4,7 @@ import pandas as pd
 from HTC_submission_helper import *
 
 def main():
-	ap = argparse.ArgumentParser(descritption="Process the template and plan a HTC experiment in Aquarium.")
+	ap = argparse.ArgumentParser()
 	ap.add_argument("-s", "--server", required=True, help="The server that this plan will be planned in.")
 	ap.add_argument("-f", "--file", required=True, help="The name of the template that will be scripted.")
 	ap.add_argument("-n", "--name", type=str, help="The name of the plan")
@@ -24,12 +24,13 @@ def main():
 	culture_condition_list = []
 	for index, row in experimental_design_df.iterrows():
 		strain_sample = get_strain_sample(db, row)
+		strain_ObjectType = db.ObjectType.find_by_name(row.Strain_containerType)
 		media_sample = db.Sample.find_by_name(row.Media)
 		ccond_op = submit_define_culture_condition(
 	        canvas,
 	        strain_sample = strain_sample,
 	        strain_item = get_strain_item(db, strain_sample, row),
-	        strain_ObjectType = db.ObjectType.find_by_name(row.Strain_containerType),
+	        strain_ObjectType = strain_ObjectType,
 	        media_sample = media_sample,
 	        media_ObjectType = media_ObjectType,
 	        replicates = row.Replicates,

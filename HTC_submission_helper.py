@@ -1,5 +1,5 @@
-import json
 import re
+import json
 # Trident
 import pydent
 from pydent import AqSession
@@ -33,7 +33,6 @@ def submit_define_culture_condition(canvas, strain_sample, strain_item, strain_O
     canvas.set_field_value(op.input('Option(s)'),     value=options_param)
     return op
 
-
 def get_strain_sample(db, row):
     if row.Strain_name is not 'None':
         return db.Sample.find_by_name(row.Strain_name)
@@ -61,7 +60,6 @@ def get_inducer_parameter(db, row):
     if row.Inducer_C_name is not 'None':
         inducer_c = { str(row.Inducer_C_name): {"final_concentration": formmat_final_concentration(row.C_FinalConcentrations)} }
         inducers_dict.update(inducer_c)
-    
     return json.dumps(inducers_dict)
 
 def formmat_final_concentration(final_concentration_token):
@@ -104,18 +102,20 @@ def get_options_parameter(db, row):
 
 def submit_inoculate_culture_plate(canvas, culture_condition_list, incubation_temperature, culture_plate_container, options_param):
     op = canvas.create_operation_by_name("Inoculate Culture Plate")
+    for i in range(total_culturing_plates(culture_condition_list, culture_plate_container)-1):
+        op.add_to_field_value_array(name="Culture Plate", container=culture_plate_container, role='output')
+
+    # canvas.set_field_value(op.output("Culture Plate"), container=culture_plate_container)
+
     canvas.set_field_value(op.input("Temperature (°C)"), value=incubation_temperature)
     canvas.set_field_value(op.input("Option(s)"), value=options_param)
-    canvas.set_field_value(op.output("Culture Plate"), container=culture_plate_container)
     input_val_array = [input_val for input_val in generate_input_array_values(culture_condition_list)]
     
     for i in range(len(input_val_array)-1):
         op.add_to_field_value_array(name="Culture Condition", role='input')
         
     for idx, cc_op in enumerate(culture_condition_list):
-        print()
         strain_item = cc_op.outputs[0].item
-        print(strain_item)
         input_array = op.field_value_array(name='Culture Condition', role='input')
         canvas.add_wire(cc_op.outputs[0], input_array[idx])
         canvas.set_field_value(cc_op.output("Culture Condition"), item=strain_item)
@@ -123,10 +123,6 @@ def submit_inoculate_culture_plate(canvas, culture_condition_list, incubation_te
     op.set_field_value_array(name="Culture Condition", role='input', values=input_val_array)
     return op
 
-def culture_condition_generator(culture_condition_list):
-    for idx, cc_op in enumerate(culture_condition_list):
-        yield idx, cc_op.output('Culture Condition')
-        
 def generate_input_array_values(culture_condition_list):
     for idx, cc_op in enumerate(culture_condition_list):
             fvs_dict = {fv.name: fv for fv in cc_op.field_values}
@@ -136,4 +132,32 @@ def generate_input_array_values(culture_condition_list):
                 'container': fvs_dict['Culture Condition'].object_type
             }
             yield value
+
+def get_inducer_combinations(inducer_parameter):
+    count_arr = []
+    for inducer_name, fconc in json.loads(inducer_parameter).items():
+        count_arr.append(int(len(fconc['final_concentration'])))
+    return count_arr
+
+def get_total_experimental_wells(culture_condition_list):        
+    total_experimental_wells = 0
+    for op in culture_condition_list:
+        fvs_dict = {fv.name: fv for fv in op.field_values}
+        replicates = int(fvs_dict['Replicates'].value)
+        for i_cond in get_inducer_combinations(fvs_dict['Inducer(s)'].value):
+            replicates *= i_cond
+        total_experimental_wells += replicates
+    return total_experimental_wells
+
+def total_culturing_plates(culture_condition_list, culture_plate_container):
+    max_wells_per_plate = culture_plate_container.rows * culture_plate_container.columns
+    total_wells = get_total_experimental_wells(culture_condition_list)
+    culturing_plates = 0
+    while total_wells > 0:
+        culturing_plates += 1
+        total_wells -= max_wells_per_plate
+    return culturing_plates
+
+
+
 

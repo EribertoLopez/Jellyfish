@@ -35,12 +35,12 @@ Scripts for accessing information about Aquarium High Throughput Culturing opera
   ```
 - Strain
   - You can select a strain by filling in the Strain name or id.
-  - Strain_name **_String_** - The name of the strain sample as found in the Aquarium database you are using.
-  - Strain_id **_Int_** - The strain sample id number as found in the Aquarium database you are using.
+  - Strain_name **_(String)_** - The name of the strain sample as found in the Aquarium database you are using.
+  - Strain_id **_(Int)_** - The strain sample id number as found in the Aquarium database you are using.
 
 - Inducer(s)
   - The scripting template allows for upto 3 different types of inducers
   - Each inducer has a name and a list of final concentrations that pertain to that inducer.
-  - Inducer_A_name **_String_** - The name of the inducer sample as found in the Aquarium database you are using.
-  - A_FinalConcnetrations **_list of strings_** - a list of final concentrations.
+  - Inducer_A_name **_(String)_** - The name of the inducer sample as found in the Aquarium database you are using.
+  - A_FinalConcnetrations **_(list of strings)_** - a list of final concentrations.
 

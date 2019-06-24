@@ -68,7 +68,11 @@ def format_final_concentration(final_concentration_token):
         if '_' in fconc:
             formatted_arr.append(fconc)
         else:
-            qty = re.findall(r'\d+', fconc)[0]
+            if '.' in fconc:
+                matching_string = r"\d+\.\d+"
+            else:
+                matching_string = r"\d+"
+            qty = re.findall(matching_string, fconc)[0]
             units = fconc.split(qty)[-1]
             fconc = qty + "_" + units
             formatted_arr.append(fconc)

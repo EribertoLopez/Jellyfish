@@ -17,8 +17,9 @@ Scripts for accessing information about Aquarium High Throughput Culturing opera
   - *_String_* - The name of the media sample as found in the Aquarium database you are using.
 
 - Control Tag
-  - *_Dict_* - The key represents the type of control and value represents positive or negative. Then, you can add your own additional information. 
+  - * _Dict_ * - The key represents the type of control and value represents positive or negative. Then, you can add your own additional information. 
   - Will tag culture condition as a control and place this culture(s) into all the plates that are generated.
+
   For a flow cytometry control, use the example below.
   ```
     {

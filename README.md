@@ -1,5 +1,5 @@
 # Aquarium_HTC
-Scripts for accessing information about Aquarium High Throughput Culturing operation types through Trident API.
+Scripts for planning and accessing information about Aquarium High Throughput Culturing operation types through the Trident API.
 
 ## Aquarium High Throughput Culturing Planning
 
@@ -78,8 +78,9 @@ The command
 
 ```bash
 python3 HTC_template_planning.py -s Production -f HTC_Scripting_Template_v3.xlsx -n "Nobel Prize Experiment"
+
 ```
 
-will plan the experiment described in the HTC_Scripting_Template_v3.xlsx on the the Aquarium Production server.
+will plan the experiment described in the HTC_Scripting_Template_v3.xlsx on the the Aquarium Production server. 
 
 

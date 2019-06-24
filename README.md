@@ -3,6 +3,8 @@ Scripts for planning and accessing information about Aquarium High Throughput Cu
 
 ## Aquarium High Throughput Culturing Planning
 
+**Make sure that the object entered into the template is JSON parable. Any word should be surrounded by quotes.**
+
 1. Fill in the `HTC_Scripting_Template_v*.xlsx` with the strains and conditions desired for your experiment.
 
 - **Replicates**
@@ -13,7 +15,6 @@ Scripts for planning and accessing information about Aquarium High Throughput Cu
 
 - **Control Tag**
   - Will tag culture condition as a control and place this culture(s) into all the plates that are generated.
-  - Make sure that the object entered into the template is JSON parable. Any word should be surrounded by quotes.
   - **_JSON_** - The key represents the type of control and value represents positive or negative. Then, you can add your own additional information.
 
   For a flow cytometry control, use the example below.
@@ -40,7 +41,7 @@ Scripts for planning and accessing information about Aquarium High Throughput Cu
   - The scripting template allows for upto 3 different types of inducers
   - Each inducer has a name and a list of final concentrations that pertain to that inducer.
   - Inducer_A_name **_(String)_** - The name of the inducer sample as found in the Aquarium database you are using.
-  - A_FinalConcnetrations **_(list of strings)_** - a list of final concentrations.
+  - A_FinalConcentrations **_(list of strings)_** - a list of final concentrations.
     - **ie:** 50_nM or 50nM 
     - **ie:** 0.15_nM, 50_nM, 100nM, 200nM
 

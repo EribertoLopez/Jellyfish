@@ -45,7 +45,7 @@ Scripts for planning and accessing information about Aquarium High Throughput Cu
 
 - **Antibiotics**
   - Antibiotic_name **_(String)_** - The name of the anitbiotic as found in the Aquarium database you are using.
-  - Antibiotic_FinalConcentration **_(list of strings)_** - a list of final concentrations
+  - Antibiotic_FinalConcentration **_(String)_** - a list of final concentrations
     - **ie:** 50_ug/mL
 
 - **Options**

@@ -3,8 +3,6 @@ Scripts for planning and accessing information about Aquarium High Throughput Cu
 
 ## Aquarium High Throughput Culturing Planning
 
-**Make sure that the object entered into the template is JSON parable. Any word should be surrounded by quotes.**
-
 1. Fill in the `HTC_Scripting_Template_v*.xlsx` with the strains and conditions desired for your experiment.
 
 - **Replicates**
@@ -15,7 +13,8 @@ Scripts for planning and accessing information about Aquarium High Throughput Cu
 
 - **Control Tag**
   - Will tag culture condition as a control and place this culture(s) into all the plates that are generated.
-  - **_JSON_** - The key represents the type of control and value represents positive or negative. Then, you can add your own additional information.
+  - **_JSON_** - The key represents the type of control and value represents positive or negative. Then, you can add your own additional information. 
+  **Make sure that the object entered into the template is JSON parable. Any word should be surrounded by quotes.**
 
   For a flow cytometry control, use the example below.
   ```
@@ -30,7 +29,6 @@ Scripts for planning and accessing information about Aquarium High Throughput Cu
       "growth_control": "negative"
     }
   ```
-  
 
 - **Strain**
   - You can select a strain by filling in the Strain name or id.
@@ -52,7 +50,7 @@ Scripts for planning and accessing information about Aquarium High Throughput Cu
 
 - **Options**
   - Is a special case for prototyping or uncommon conditions.
-  - **_JSON_** - If using options, make sure that the object is JSON parable
+  - **_JSON_** - **Make sure that the object entered into the template is JSON parable. Any word should be surrounded by quotes.**
 
 ## Setup
 

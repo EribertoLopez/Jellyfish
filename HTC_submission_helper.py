@@ -84,11 +84,9 @@ def format_parameter_string(string):
 # TODO: Start planning with antibiotics
 def get_antibio_parameter(db, row):
     antibiotics_dict = {}
-    if row.Antibiotics is not 'None':
-        format_str = format_parameter_string(row.Antibiotics)
-        for string in format_str:
-            key, value = string.split(':')
-            antibiotics_dict[key] = value
+    if row.Antibiotic_name is not 'None':
+        antibiotic = { str(row.Antibiotic_name): {"final_concentration": format_final_concentration(row.Antibiotic_FinalConcentration)} }
+        antibiotics_dict.update(antibiotic)
     else:
         return antibiotics_dict
     return json.dumps(antibiotics_dict)

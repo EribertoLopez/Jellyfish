@@ -5,15 +5,16 @@ Scripts for planning and accessing information about Aquarium High Throughput Cu
 
 1. Fill in the `HTC_Scripting_Template_v*.xlsx` with the strains and conditions desired for your experiment.
 
-- Replicates
+- **Replicates**
   - **_Int_** - The amount of replicates desired for a contiion
 
-- Media
+- **Media**
   - **_String_** - The name of the media sample as found in the Aquarium database you are using.
 
-- Control Tag
-  - **_Dict_** - The key represents the type of control and value represents positive or negative. Then, you can add your own additional information. 
+- **Control Tag**
   - Will tag culture condition as a control and place this culture(s) into all the plates that are generated.
+  - Make sure that the object entered into the template is JSON parable. Any word should be surrounded by quotes.
+  - **_JSON_** - The key represents the type of control and value represents positive or negative. Then, you can add your own additional information.
 
   For a flow cytometry control, use the example below.
   ```
@@ -28,25 +29,29 @@ Scripts for planning and accessing information about Aquarium High Throughput Cu
       "growth_control": "negative"
     }
   ```
-- Strain
+  
+
+- **Strain**
   - You can select a strain by filling in the Strain name or id.
   - Strain_name **_(String)_** - The name of the strain sample as found in the Aquarium database you are using.
   - Strain_id **_(Int)_** - The strain sample id number as found in the Aquarium database you are using.
 
-- Inducer(s)
+- **Inducer(s)**
   - The scripting template allows for upto 3 different types of inducers
   - Each inducer has a name and a list of final concentrations that pertain to that inducer.
   - Inducer_A_name **_(String)_** - The name of the inducer sample as found in the Aquarium database you are using.
   - A_FinalConcnetrations **_(list of strings)_** - a list of final concentrations.
     - **ie:** 50_nM or 50nM 
+    - **ie:** 0.15_nM, 50_nM, 100nM, 200nM
 
-- Antibiotics
+- **Antibiotics**
   - Antibiotic_name **_(String)_** - The name of the anitbiotic as found in the Aquarium database you are using.
   - Antibiotic_FinalConcentration **_(list of strings)_** - a list of final concentrations
     - **ie:** 50_ug/mL
 
-- Options
-  - Is a special case for prototyping or uncommon conditions. 
+- **Options**
+  - Is a special case for prototyping or uncommon conditions.
+  - **_JSON_** - If using options, make sure that the object is JSON parable
 
 ## Setup
 

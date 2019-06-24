@@ -19,14 +19,15 @@ Scripts for accessing information about Aquarium High Throughput Culturing opera
 - Control Tag
   - *_Dict_* - The key represents the type of control and value represents positive or negative. Then, you can add your own additional information. 
   - Will tag culture condition as a control and place this culture(s) into all the plates that are generated.
+  For a flow cytometry control, use the example below.
   ```
-    For a flow cytometry control, use the example below.
     {
       "flourescence_control": "positive",
       "channel": "tdTomato"
     }
-    
-    Example growth control:
+  ```
+  Growth control example:
+  ```
     {
       "growth_control": "negative"
     }

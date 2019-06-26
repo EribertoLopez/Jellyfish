@@ -6,3 +6,4 @@ planning_resources.py
 **/*.csv
 **/__pycache__
 **/plan_**
+**.ipynb**

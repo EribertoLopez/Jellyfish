@@ -79,13 +79,13 @@ def format_final_concentration(final_concentration_token):
     return formatted_arr
                                  
 def format_parameter_string(string):
+    string = string.replace('\"', '')
     return string.replace(' ','').replace('{', '').replace('}', '').split(',')
 
-# TODO: Start planning with antibiotics
 def get_antibio_parameter(db, row):
     antibiotics_dict = {}
     if row.Antibiotic_name is not 'None':
-        antibiotic = { str(row.Antibiotic_name): {"final_concentration": format_final_concentration(row.Antibiotic_FinalConcentration)} }
+        antibiotic = { str(row.Antibiotic_name): {"final_concentration": format_final_concentration(row.Antibiotic_FinalConcentration)[0]} }
         antibiotics_dict.update(antibiotic)
     else:
         return antibiotics_dict
@@ -101,17 +101,22 @@ def get_control_parameter(db, row):
     else:
         return control_dict
     return json.dumps(control_dict)
-    
+
 def get_options_parameter(db, row):
     options_dict = {}
     if row.Options is not 'None':
-        format_str = format_parameter_string(row.Options)
-        for string in format_str:
-            key, value = string.split(':')
-            control_dict[key] = value
+        if is_json(row, row.Options):
+            options_dict.update(json.loads(row.Options))
     else:
-        return options_dict
+        return {}
     return json.dumps(options_dict)
+
+def is_json(row, obj):
+    try:
+        json_obj = json.loads(obj)
+    except:
+        raise Exception(f"\nCulture condition {obj} contains an object that is not JSON parable.\n")
+    return True
 
 def submit_inoculate_culture_plate(canvas, culture_condition_list, incubation_temperature, culture_plate_container, options_param):
     op = canvas.create_operation_by_name("Inoculate Culture Plate")

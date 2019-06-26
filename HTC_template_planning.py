@@ -5,7 +5,7 @@ from HTC_submission_helper import *
 
 def main():
 	ap = argparse.ArgumentParser()
-	ap.add_argument("-s", "--server", required=True, help="The server that this plan will be planned in.")
+	ap.add_argument("-s", "--server", required=True, help="The server that this plan will be planned in. Either Production, Nursery, or Local.")
 	ap.add_argument("-f", "--file", required=True, help="The name of the template that will be scripted.")
 	ap.add_argument("-n", "--name", type=str, default='Untitled Experiment', help="The name of your plan.")
 	ap.add_argument("-t", "--temp", type=int, default=30, help="The temperature that the culturing plate will be grown to saturation. Default will be 30C.")
@@ -57,6 +57,7 @@ def main():
 	canvas.layout.draw()
 	canvas.create()
 	canvas.save()
+	print(canvas.url)
 
 def load_template_file(filename):
 	experimental_design_df = pd.read_excel(filename)

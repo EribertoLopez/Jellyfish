@@ -57,7 +57,9 @@ def main():
 	canvas.layout.draw()
 	canvas.create()
 	canvas.save()
-	print(canvas.url)
+	print()
+	print("Your new plan {} can be found at".format(args['name']), canvas.url)
+	print()
 
 def load_template_file(filename):
 	experimental_design_df = pd.read_excel(filename)

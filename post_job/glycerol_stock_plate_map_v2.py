@@ -5,7 +5,6 @@ sys.path.append(os.getcwd())
 import argparse
 import pandas as pd
 import numpy as np
-
 from urllib.request import urlopen
 # Trident
 import pydent
@@ -14,8 +13,6 @@ from pydent import planner
 # Modules
 from HTC_submission_helper import session
 
-# Will set the session to desired database
- 
 def generate_collection_part_associations(collection):
     for pa in collection.part_associations:
         yield pa
@@ -42,10 +39,14 @@ def get_part_collection_loc(collection):
     return dict_arr
            
 def get_glycerol_stock_plates(db, plan_id):
-	plan = db.Plan.find(plan_id)
-	glycerol_ops = [op for op in plan.operations if op.operation_type.name == 'Make Glycerol Stock Plates']
-	glycerol_stock_plates = db.Collection.find([op.outputs[0].item.id for op in glycerol_ops])
-	return glycerol_stock_plates
+    plan = db.Plan.find(plan_id)
+    glycerol_stock_plates = []
+    for op in plan.operations:
+        if op.operation_type.name == 'Make Glycerol Stock Plates':
+            for fv in op.output_array('Glycerol Stock Plate'):
+                glycerol_stock_plates.append(fv.item.id)
+    glycerol_stock_plates = db.Collection.find(glycerol_stock_plates)
+    return glycerol_stock_plates
 
 def main():
     ap = argparse.ArgumentParser()

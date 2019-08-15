@@ -12,7 +12,7 @@ Once planned the operations sort and organize conditions into a high throughput 
 ![Inoculate Culture Plate Example](/docs/_images/inoculate_culture_plate_example.png?raw=true "Inoculate Culture Plate Example")
 
 After execution, the virtual container will have representations of user defined experimental conditions.
-![Culture Component Representations](/docs/_images/cultureComponent_representations.png?raw=true "Culture Component Representations")
+![Culture Component Representations](/docs/_images/cultureComponent_representation.png?raw=true "Culture Component Representations")
 <!-- ## Aquarium High Throughput Culturing Planning
 
 1. Fill in the `HTC_Scripting_Template_v*.xlsx` with the strains and conditions desired for your experiment.

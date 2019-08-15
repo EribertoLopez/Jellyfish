@@ -1,10 +1,4 @@
-# Jellyfish
-Scripts for planning and accessing information about Aquarium High Throughput Culturing operation types through the Trident API.
-
-_Aequorea victoria_ or the Crystal Jelly, is best known as the source of bioluminescent proteins, aequorin & green fluorescent protein (GFP). Their discoverers, Osamu Shimomura and colleagues, won the 2008 Nobel Prize in Chemistry for their work on GFP. This repository automates the phenotypic charaterization of genetically modified organisms expressing fluorecent proteins.
-
-![Inoculate Culture Plate Example](/imgs/inoculate_culture_plate_example.png?raw=true "Inoculate Culture Plate Example")
-<!-- ## Aquarium High Throughput Culturing Planning
+## Aquarium High Throughput Culturing Planning
 
 1. Fill in the `HTC_Scripting_Template_v*.xlsx` with the strains and conditions desired for your experiment.
 
@@ -91,4 +85,3 @@ python3 HTC_template_planning.py -s Production -f HTC_Scripting_Template_v3.xlsx
 will plan the experiment described in the HTC_Scripting_Template_v3.xlsx on the the Aquarium Production server. 
 
 
- -->

@@ -1,9 +1,13 @@
-## Aquarium High Throughput Culturing Planning
+## Planning
 
-1. Fill in the `HTC_Scripting_Template_v*.xlsx` with the strains and conditions desired for your experiment.
+The `Jellyfish` repository comes an Excel sheet planning template. The following describes how to properly fill out the template, then how to plan experiment using `plan_experiment.py`. 
+
+1. Go to `Jellyfish/templates/default_template` and make a copy of `HTC_Scripting_Template_v*.xlsx`. Feel free to name the copy to something else.
+
+2. Fill in the `HTC_Scripting_Template_v*.xlsx` with the strains and conditions desired for your experiment.
 
 - **Replicates**
-  - **_Int_** - The amount of replicates desired for a contiion
+  - **_Int_** - The number of replicates desired for a condition.
 
 - **Media**
   - **_String_** - The name of the media sample as found in the Aquarium database you are using.
@@ -57,7 +61,7 @@
 ## Running
 
 ```bash
-python3 HTC_template_planning.py --help
+python3 plan_experiment.py --help
 ```
 
 shows the command-line arguments for the script
@@ -73,15 +77,15 @@ optional arguments:
                         to saturation. Default will be 30C.
 ```
 
-You must provide the name of the server you will be sending your plan to and the name of the file that will be scripted.
+The default planning server is set to `Production`, if you wish to change it use the `-s` flag and type in either `Production, Nursery, or Local`
 
 The command
 
 ```bash
-python3 HTC_template_planning.py -s Production -f HTC_Scripting_Template_v3.xlsx -n "Nobel Prize Experiment"
+python3 -W ignore plan_experiment.py -s Nursery -f path/to/My_Experimental_Intent_Template.xlsx -n "Nobel Prize Experiment"
 
 ```
 
-will plan the experiment described in the HTC_Scripting_Template_v3.xlsx on the the Aquarium Production server. 
+will plan the experiment described in the My_Experimental_Intent_Template.xlsx on the the Aquarium Nursery server. Furthermore, the `-W ignore` command prevents Trident API AllowableField Warning messages.
 
 

@@ -18,8 +18,15 @@ After execution, the virtual container will have representations of user defined
 
 1. Go to `Jellyfish/aquarium_resources`
 
-2. Copy `default_resources.py` to `resources.py` 
+2. Using your command line terminal, type the commmands as follows to create a new file.
+```bash
+touch resources.py
+```
+Next copy the `default_resources.py` contents to the new `resources.py`, 
+```bash
+cat default_resources.py > resources.py
+```
 
-3. Fill in the values for `username` and `password` details.
+3. Finally, use your favorite text editor to fill in the values for `username` and `password` details found in the `resources.py`.
    
 

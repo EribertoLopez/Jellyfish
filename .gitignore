@@ -1,9 +1,6 @@
 # Files to ignore
 resources.py
-planning_resources.py
-/planning
-# Ignore output files
+# Ignore output GSP metadata csv
 **/*.csv
+**/.ipynb_checkpoints
 **/__pycache__
-**/plan_**
-**.ipynb**

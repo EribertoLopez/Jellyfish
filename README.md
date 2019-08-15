@@ -1,5 +1,8 @@
-# Aquarium_HTC
+# Jellyfish
 Scripts for planning and accessing information about Aquarium High Throughput Culturing operation types through the Trident API.
+
+Aequorea victoria or the Crystal Jelly, is best known as the source of bioluminescence, aequorin & green fluorescent protein (GFP). Their discoverers, Osamu Shimomura and colleagues, won the 2008 Nobel Prize in Chemistry for their work on GFP. This repository automates the phenotypic charaterization of genetically modified organisms expressing fluorecent proteins.
+
 
 ## Aquarium High Throughput Culturing Planning
 

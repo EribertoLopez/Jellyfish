@@ -3,7 +3,16 @@ Scripts for planning and accessing information about Aquarium High Throughput Cu
 
 _Aequorea victoria_ or the Crystal Jelly, is best known as the source of bioluminescent proteins, aequorin & green fluorescent protein (GFP). Their discoverers, Osamu Shimomura and colleagues, won the 2008 Nobel Prize in Chemistry for their work on GFP. This repository automates the phenotypic charaterization of genetically modified organisms expressing fluorecent proteins.
 
-![Inoculate Culture Plate Example](/imgs/inoculate_culture_plate_example.png?raw=true "Inoculate Culture Plate Example")
+## Planned Example and Execution
+
+Scripts automate the planning of 'Define Culture Conditions' operations which take JSON parsable parameters 
+![High Throughput Culturing Plan](/docs/_images/plan_example.png?raw=true "High Throughput Culturing Plan")
+
+Once planned the operations sort and organize conditions into a high throughput container.
+![Inoculate Culture Plate Example](/docs/_images/inoculate_culture_plate_example.png?raw=true "Inoculate Culture Plate Example")
+
+After execution, the virtual container will have representations of user defined experimental conditions.
+![Culture Component Representations](/docs/_images/cultureComponent_representations.png?raw=true "Culture Component Representations")
 <!-- ## Aquarium High Throughput Culturing Planning
 
 1. Fill in the `HTC_Scripting_Template_v*.xlsx` with the strains and conditions desired for your experiment.

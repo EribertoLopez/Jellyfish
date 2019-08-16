@@ -16,7 +16,7 @@ After execution, the virtual container will have representations of user defined
 
 ## Getting Started
 
-1. Go to `Jellyfish/aquarium_resources`
+1. Go to `Jellyfish/Jellyfish/aquarium_resources`
 
 2. Using your command line terminal, type the commmands as follows to create a new file.
 ```bash
